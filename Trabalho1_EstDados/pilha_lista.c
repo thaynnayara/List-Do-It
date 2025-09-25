@@ -8,50 +8,28 @@
 #define TAM_DESCRICAO 100  
 #define TAM_NOTIFICACAO 200 
 
-
-/*
-
-Tarefa: É a nossa unidade básica. Cada tarefa terá um número de identificação (id), uma descrição e um status (concluida).
-
-Acao: Essencial para o Undo/Redo(refazer/desfazer). Ela guarda que tipo de ação foi feita e em qual Tarefa.
-
-ListaDeTarefas: É um array estático que guarda nossas tarefas. O controle quantidade nos diz quantas tarefas temos.
-
-PilhaDeAcoes: Nossa pilha para o histórico. O topo = -1 indicará que ela está vazia.
-
-FilaDeNotificacoes: Nossa fila para as mensagens. Usaremos frente e final para controlar a entrada e saída, de forma similar ao exemplo de Fila Linear do seu PDF.
-
-*/
-
-// --- Estruturas de Dados ---
-
-// Estrutura para uma única tarefa
+// Estruturas de Dados
 typedef struct {
     int id;
     char descricao[TAM_DESCRICAO];
-    int concluida; // teste booleano onde 0 para pendente e 1 para concluída
+    int concluida; 
 } Tarefa;
-
-// Estrutura para uma Ação (para o refazer/desfazer)
 typedef struct {
     char tipo_acao[20];
-    Tarefa tarefa;      // tarefa que será modificada
+    Tarefa tarefa;   
 } Acao;
 
-// lista (uuso de array estático)
 typedef struct {
     Tarefa tarefas[MAX_TAREFAS];
     int quantidade;
-    int proximo_id; // geração id's únicos
+    int proximo_id; 
 } ListaDeTarefas;
 
-// pilha (para refazer/desfazer)
 typedef struct {
     Acao acoes[MAX_ACOES];
     int topo;  
 } PilhaDeAcoes;
 
-// fila (para notificações)
 typedef struct {
     char notificacoes[MAX_NOTIFICACOES][TAM_NOTIFICACAO];
     int frente;
@@ -61,12 +39,12 @@ typedef struct {
 // Métodos 
 
 void inicializar_lista(ListaDeTarefas *lista) {
-    lista->quantidade = 0; // zera a quantidade de tarefas
-    lista->proximo_id = 1; // a primeira tarefa receberá id 1
+    lista->quantidade = 0; 
+    lista->proximo_id = 1; 
     printf("Lista de tarefas inicializada com sucesso!\n");
 }
 
-// função para adicionar uma nova tarefa à lista
+
 void adicionar_tarefa(ListaDeTarefas *lista, const char* descricao) {
 
     if (lista->quantidade >= MAX_TAREFAS) {
@@ -77,20 +55,17 @@ void adicionar_tarefa(ListaDeTarefas *lista, const char* descricao) {
     // cria a nova tarefa
     Tarefa nova_tarefa;
     nova_tarefa.id = lista->proximo_id;
-    strcpy(nova_tarefa.descricao, descricao); // copia a descrição para a tarefa
-    nova_tarefa.concluida = 0; // nova tarefa começa como "pendente"
+    strcpy(nova_tarefa.descricao, descricao); 
+    nova_tarefa.concluida = 0; 
 
-    // adiciona a nova tarefa ao array de tarefas
     lista->tarefas[lista->quantidade] = nova_tarefa;
     
-    // atualizando
     lista->quantidade++;
     lista->proximo_id++;
 
     printf("Tarefa '%s' adicionada com sucesso!\n", descricao);
 }
 
-// função para listar todas as tarefas -- configuração de leitura
 void listar_tarefas(const ListaDeTarefas *lista) {
 
     printf("\n------------- Lista de Tarefas -------------\n");
@@ -110,9 +85,8 @@ void listar_tarefas(const ListaDeTarefas *lista) {
     printf("---------------------------\n");
 }
 
-// função para alterar o status de uma tarefa (concluída ou pendente)
 void marcar_status_tarefa(ListaDeTarefas *lista, int id_tarefa, int novo_status) {
-    // Primeiro, vamos procurar a tarefa com o ID fornecido
+
     for (int i = 0; i < lista->quantidade; i++) {
         
         if (lista->tarefas[i].id == id_tarefa) {
@@ -130,7 +104,7 @@ void marcar_status_tarefa(ListaDeTarefas *lista, int id_tarefa, int novo_status)
 }
 
 
-// --- Função principal ---
+
 int main() {
     ListaDeTarefas minha_lista;
     int opcao;
