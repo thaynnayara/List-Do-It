@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Dia a Dia - Gerenciador de tarefas pessoal</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Task Dia a Dia</h1>
+            <p>Gerenciador de tarefas pessoal</p>
+        </header>
+
+        <main>
+            <div class="form-tarefa">
+                <input type="text" id="add-nova-tarefa" placeholder="Digite a descrição da nova tarefa">
+                <button id="btn-adicionar">Adicionar</button>
+            </div>
+
+            <div class="lista-container">
+                <h2>Minhas Tarefas</h2>
+                <ul id="lista-de-tarefas">
+                    </ul>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

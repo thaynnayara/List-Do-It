@@ -1,0 +1,127 @@
+/* Configurações Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 40px;
+}
+
+/* Container Principal */
+.container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #d81e1e;
+}
+
+/* Formulário para adicionar tarefa */
+.form-tarefa {
+    display: flex;
+    gap: 35px;
+    margin-bottom: 50px;
+}
+
+#add-nova-tarefa {
+    flex-grow: 1; 
+    padding: 12px;
+    border: 2px solid #1f1b1b;
+    border-radius: 7px;
+    font-size: 1em;
+}
+
+#btn-adicionar {
+    padding: 12px 20px;
+    font-size: 1em;
+    font-weight: 500;
+    background-color: #ee1f1f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#btn-adicionar:hover {
+    background-color: #e9c652;
+}
+
+/* Lista de Tarefas */
+.lista-container h2 {
+    margin-bottom: 15px;
+    color: #d61c1c;
+}
+
+#lista-de-tarefas {
+    list-style: none; 
+}
+
+.item-tarefa {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.item-tarefa:hover {
+    background-color: #f1f1f1;
+}
+
+.item-tarefa input[type="checkbox"] {
+    margin-right: 15px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.item-tarefa .descricao {
+    flex-grow: 1;
+    font-size: 1.1em;
+}
+
+.item-tarefa.concluida .descricao {
+    text-decoration: line-through;
+    color: #3f4444;
+}
+
+.btn-excluir {
+    background-color: #ce1d1d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+}
+
+.item-tarefa:hover .btn-excluir {
+    opacity: 1; 
+}
